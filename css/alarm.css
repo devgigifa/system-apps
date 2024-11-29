@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  color: #fff;
 }
 body, .wrapper, .content{
   display: flex;
@@ -14,12 +15,12 @@ body, .wrapper, .content{
 body{
   padding: 0 10px;
   min-height: 100vh;
-  background: #4A98F7;
+  background: linear-gradient(to right, #141E30, #243B55);
 }
 .wrapper{
   width: 440px;
   padding: 30px 30px 38px;
-  background: #fff;
+  background: #2f4754;
   border-radius: 10px;
   flex-direction: column;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -67,5 +68,5 @@ body{
   padding: 17px 0;
   margin-top: 20px;
   border-radius: 5px;
-  background: #4A98F7;
+  background: #509ba0;
 }

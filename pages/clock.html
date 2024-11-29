@@ -11,16 +11,17 @@
   <body>
     <div class="container">
       <div class="clock">
-        <div style="--clr: #ff3d58; --h: 74px" id="hour" class="hand">
+        <div style="--clr: #d4a373; --h: 74px" id="hour" class="hand">
           <i></i>
         </div>
-        <div style="--clr: #00a6ff; --h: 84px" id="min" class="hand">
+        <div style="--clr: #9e9e9e; --h: 84px" id="min" class="hand">
           <i></i>
         </div>
-        <div style="--clr: #ffffff; --h: 94px" id="sec" class="hand">
+        <div style="--clr: #e63946; --h: 94px" id="sec" class="hand">
           <i></i>
         </div>
 
+        <!-- Números do relógio -->
         <span style="--i: 1"><b>1</b></span>
         <span style="--i: 2"><b>2</b></span>
         <span style="--i: 3"><b>3</b></span>
@@ -34,6 +35,9 @@
         <span style="--i: 11"><b>11</b></span>
         <span style="--i: 12"><b>12</b></span>
       </div>
+
+      <!-- Relógio digital -->
+      <div id="digital-clock" class="digital-clock">00:00:00</div>
     </div>
 
     <script src="../js/clock.js"></script>

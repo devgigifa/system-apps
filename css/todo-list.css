@@ -7,8 +7,7 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background-color: #e3f2fd;
-}
+  background: linear-gradient(to right, #C4E0E5, #e9fde3);}
 
 /* width */
 ::-webkit-scrollbar {
@@ -55,7 +54,7 @@ body {
   resize: none;
 }
 .input-field textarea:focus {
-  border-color: #4070f4;
+  border-color: #136A8A;
 }
 textarea::-webkit-scrollbar {
   display: none;
@@ -70,7 +69,7 @@ textarea::-webkit-scrollbar {
   color: #707070;
 }
 .input-field textarea:focus ~ .note-icon {
-  color: #4070f4;
+  color: #136A8A;
 }
 .container .todoLists {
   max-height: 380px;
@@ -81,7 +80,7 @@ textarea::-webkit-scrollbar {
   display: flex;
   align-items: center;
   list-style: none;
-  background-color: #f2f2f2;
+  background-color: #e3f2fd;
   padding: 20px 15px;
   border-radius: 8px;
   margin-top: 10px;
@@ -91,7 +90,7 @@ textarea::-webkit-scrollbar {
 .todoLists .list input {
   height: 16px;
   min-width: 16px;
-  accent-color: #4070f4;
+  accent-color: #136A8A;
   pointer-events: none;
 }
 .todoLists .list .task {
@@ -131,7 +130,7 @@ textarea::-webkit-scrollbar {
   padding: 6px 12px;
   outline: none;
   border: none;
-  background: #4070f4;
+  background: #136A8A;
   color: #fff;
   font-size: 14px;
   border-radius: 4px;

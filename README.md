@@ -46,21 +46,17 @@ O objetivo deste projeto é reunir várias funcionalidades em um único site, si
   - [ ] Criar uma interface de usuário responsiva, semelhante a aplicativos móveis.
   
 - [ ] **Funcionalidades**
+  - [x] **Calculadora de Idade**
+  - [x] **alarme**
   - [ ] **Calculadora**
-    - [ ] Implementar funcionalidades básicas (adição, subtração, multiplicação, divisão).
-  - [ ] **Calculadora de Idade**
-    - [ ] Calcular a idade exata a partir da data de nascimento.
+  - [x] **calendário**
+  - [x] **relógio**
+  - [x] **Cronômetro**
+  - [x] **Dicionário**
   - [x] **Filtro de Fotos**
-    - [x] Adicionar filtros básicos (preto e branco, sépia, etc.).
-  - [ ] **Captura de Tela**
-    - [ ] Permitir capturas de tela da interface.
-  - [ ] **Dicionário**
-    - [ ] Implementar busca de definições.
   - [ ] **Music Player**
-    - [ ] Player básico com opções de play, pause, próxima faixa, volume.
   - [ ] **Notas**
-    - [ ] Criar, editar e salvar anotações.
-  - [ ] **Texto em PDF**
-    - [ ] Conversão de texto simples para PDF.
-  - [ ] **Cronômetro**
-    - [ ] Iniciar, pausar e resetar tempo.
+  - [x] **pomodoro timer**
+  - [x] **todo list**
+  - [x] **tradutor**
+  - [] **clima**

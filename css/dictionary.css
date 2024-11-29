@@ -11,7 +11,7 @@ body{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #4D59FB;
+  background: linear-gradient(to right, #DDD6F3, #FAACA8);
 }
 ::selection{
   color: #fff;
@@ -40,6 +40,7 @@ body{
   font-size: 16px;
   border-radius: 5px;
   padding: 0 42px;
+  background: #EEF2F3;
   border: 1px solid #999;
 }
 .search input:focus{

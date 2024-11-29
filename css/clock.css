@@ -1,68 +1,85 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
-    color: #ffffff;
-}
-
-body{
+    font-family: "Times New Roman", serif;
+  }
+  
+  body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #212121;
-}
-
-.container{
+    background-color: #18140e;
+  }
+  
+  /* Container principal */
+  .container {
     position: relative;
-}
-
-.clock{
+    text-align: center;
+  }
+  
+  .clock {
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.9);
+    background: radial-gradient(circle, #f4e7d4 40%, #d4a373);
+    border: 8px solid #6b4226;
+    box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.clock span{
+    position: relative;
+  }
+  
+  /* Números do relógio */
+  .clock span {
     position: absolute;
-    transform: rotate(calc(30deg * var(--i))); 
+    transform: rotate(calc(30deg * var(--i)));
     inset: 12px;
     text-align: center;
-}
-
-.clock span b{
+  }
+  
+  .clock span b {
     transform: rotate(calc(-30deg * var(--i)));
     display: inline-block;
     font-size: 20px;
-}
-
-.clock::before{
-    content: '';
+    color: #6b4226;
+  }
+  
+  /* Ponto central do relógio */
+  .clock::before {
+    content: "";
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: #6b4226;
     z-index: 2;
-}
-
-.hand{
+  }
+  
+  /* Ponteiros do relógio */
+  .hand {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-}
-.hand i{
+  }
+  
+  .hand i {
     position: absolute;
     background-color: var(--clr);
     width: 4px;
     height: var(--h);
     border-radius: 8px;
-}
+  }
+  
+  .digital-clock {
+    margin-top: 20px;
+    font-size: 50px;
+    color: #6b4226;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  
