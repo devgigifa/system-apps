@@ -1,96 +1,142 @@
+const navItems = document.querySelectorAll(".nav-item");
+
+navItems.forEach((navItem, i) => {
+  navItem.addEventListener("click", () => {
+    navItems.forEach((item, j) => {
+      item.className = "nav-item";
+    });
+    navItem.className = "nav-item active";
+  });
+});
+
+const containers = document.querySelectorAll(".containers");
+
+containers.forEach((container) => {
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  container.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    const x = e.pageX - container.offsetLeft;
+    const step = (x - startX) * 0.6;
+    container.scrollLeft = scrollLeft - step;
+  });
+
+  container.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  container.addEventListener("mouseleave", () => {
+    isDragging = false;
+  });
+});
+
 const progress = document.getElementById("progress");
 const song = document.getElementById("song");
 const controlIcon = document.getElementById("controlIcon");
 const playPauseButton = document.querySelector(".play-pause-btn");
 const forwardButton = document.querySelector(".controls button.forward");
 const backwardButton = document.querySelector(".controls button.backward");
-const songName = document.querySelector(".music-player h1");
+const rotatingImage = document.getElementById("rotatingImage");
+const songName = document.querySelector(".music-player h2");
 const artistName = document.querySelector(".music-player p");
-const currentTimeDisplay = document.getElementById("currentTime");
-const totalTimeDisplay = document.getElementById("totalTime");
+
+let rotating = false;
+let currentRotation = 0;
+let rotationInterval;
 
 const songs = [
   {
-    title: "Symphony",
-    name: "Clean Bandit ft. Zara Larsson",
-    source: "../assets/music-player/Song1.mp3",
+    title: "Redemption",
+    name: "Besomorph & Coopex",
+    source:
+      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Besomorph-Coopex-Redemption.mp3",
+    cover:
+      "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/398875d0-9b9e-494a-8906-210aa3f777e0",
   },
   {
-    title: "Pawn It All",
-    name: "Alicia Keys",
-    source: "../assets/music-player/Song2.mp3",
+    title: "What's The Problem?",
+    name: "OSKI",
+    source:
+      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/OSKI-Whats-The-Problem.mp3",
+    cover:
+      "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/810d1ddc-1168-4990-8d43-a0ffee21fb8c",
   },
   {
-    title: "Seni Dert Etmeler",
-    name: "Madrigal",
-    source: "../assets/music-player/Song3.mp3",
-  },
-  {
-    title: "Instant Crush",
-    name: "Daft Punk ft. Julian Casablancas",
-    source: "../assets/music-player/Song4.mp3",
-  },
-  {
-    title: "As It Was",
-    name: "Harry Styles",
-    source: "../assets/music-player/Song5.mp3",
-  },
-  {
-    title: "Physical",
-    name: "Dua Lipa",
-    source: "../assets/music-player/Song6.mp3",
-  },
-  {
-    title: "Delicate",
-    name: "Taylor Swift",
-    source: "../assets/music-player/Song7.mp3",
+    title: "Control",
+    name: "Unknown Brain x Rival",
+    source:
+      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Unknown-BrainxRival-Control.mp3",
+    cover:
+      "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/7bd23b84-d9b0-4604-a7e3-872157a37b61",
   },
 ];
 
-let currentSongIndex = 3;
+let currentSongIndex = 0;
 
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+function startRotation() {
+  if (!rotating) {
+    rotating = true;
+    rotationInterval = setInterval(rotateImage, 50);
+  }
+}
+
+function pauseRotation() {
+  clearInterval(rotationInterval);
+  rotating = false;
+}
+
+function rotateImage() {
+  currentRotation += 1;
+  rotatingImage.style.transform = `rotate(${currentRotation}deg)`;
 }
 
 function updateSongInfo() {
   songName.textContent = songs[currentSongIndex].title;
   artistName.textContent = songs[currentSongIndex].name;
   song.src = songs[currentSongIndex].source;
+  rotatingImage.src = songs[currentSongIndex].cover;
+
+  song.addEventListener("loadeddata", function () {});
 }
+
+song.addEventListener("loadedmetadata", function () {
+  progress.max = song.duration;
+  progress.value = song.currentTime;
+});
+
+song.addEventListener("ended", function () {
+  currentSongIndex = (currentSongIndex + 1) % songs.length;
+  updateSongInfo();
+  playPause();
+});
 
 song.addEventListener("timeupdate", function () {
   if (!song.paused) {
     progress.value = song.currentTime;
-    currentTimeDisplay.textContent = formatTime(song.currentTime);
   }
 });
 
-song.addEventListener("loadedmetadata", function () {
-  progress.max = song.duration;
-  totalTimeDisplay.textContent = formatTime(song.duration);
-  currentTimeDisplay.textContent = formatTime(song.currentTime);
-});
-
-function pauseSong() {
-  song.pause();
-  controlIcon.classList.remove("fa-pause");
-  controlIcon.classList.add("fa-play");
-}
-
-function playSong() {
-  song.play();
-  controlIcon.classList.add("fa-pause");
-  controlIcon.classList.remove("fa-play");
-}
-
 function playPause() {
   if (song.paused) {
-    playSong();
+    song.play();
+    controlIcon.classList.add("fa-pause");
+    controlIcon.classList.remove("fa-play");
+    startRotation();
   } else {
-    pauseSong();
+    song.pause();
+    controlIcon.classList.remove("fa-pause");
+    controlIcon.classList.add("fa-play");
+    pauseRotation();
   }
 }
 
@@ -98,11 +144,13 @@ playPauseButton.addEventListener("click", playPause);
 
 progress.addEventListener("input", function () {
   song.currentTime = progress.value;
-  currentTimeDisplay.textContent = formatTime(song.currentTime);
 });
 
 progress.addEventListener("change", function () {
-  playSong();
+  song.play();
+  controlIcon.classList.add("fa-pause");
+  controlIcon.classList.remove("fa-play");
+  startRotation();
 });
 
 forwardButton.addEventListener("click", function () {
@@ -119,23 +167,26 @@ backwardButton.addEventListener("click", function () {
 
 updateSongInfo();
 
-
 var swiper = new Swiper(".swiper", {
   effect: "coverflow",
+  grabCursor: true,
   centeredSlides: true,
-  initialSlide: 3,
+  loop: true,
+  speed: 600,
   slidesPerView: "auto",
-  allowTouchMove: false,
-  spaceBetween: 40,
   coverflowEffect: {
-    rotate: 25,
-    stretch: 0,
-    depth: 50,
+    rotate: 10,
+    stretch: 120,
+    depth: 200,
     modifier: 1,
     slideShadows: false,
   },
-  navigation: {
-    nextEl: ".forward",
-    prevEl: ".backward",
+   on: {
+    click(event) {
+      swiper.slideTo(this.clickedIndex);
+    },
+  },
+  pagination: {
+    el: ".swiper-pagination",
   },
 });

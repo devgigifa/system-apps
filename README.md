@@ -25,7 +25,6 @@ O objetivo deste projeto é reunir várias funcionalidades em um único site, si
 - **Dicionário**: Busque definições de palavras.
 - **Editor de Fotos**: Edite suas fotos com ferramentas básicas de corte, ajuste de brilho, e contraste.
 - **Music Player**: Ouça suas músicas favoritas com um player simples.
-- **Notas**: Crie e organize suas anotações.
 - **Texto em PDF**: Converta textos para arquivos PDF.
 - **Cronômetro**: Ferramenta simples para medir intervalos de tempo.
 - **Relógio**: Exibe a hora atual.
@@ -55,7 +54,6 @@ O objetivo deste projeto é reunir várias funcionalidades em um único site, si
   - [x] **Dicionário**
   - [x] **Filtro de Fotos**
   - [ ] **Music Player**
-  - [ ] **Notas**
   - [x] **pomodoro timer**
   - [x] **todo list**
   - [x] **tradutor**
